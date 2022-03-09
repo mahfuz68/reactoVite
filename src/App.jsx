@@ -1,9 +1,10 @@
-import Clock from "./component/Clock";
+import Form from "./component/Form";
 
 function App() {
   return (
     <div>
-      <Clock />
+      {/* <ClockList quantities={[1, 2, 3==]} /> */}
+      <Form />
     </div>
   );
 }
