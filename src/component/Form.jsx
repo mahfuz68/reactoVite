@@ -1,35 +1,39 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class Form extends Component {
   state = {
-    title: "javascript",
-    text: "javascript",
-    library: "react",
+    title: 'javascript',
+    text: 'javascript',
+    library: 'react',
     isMail: true,
   };
 
   handleChange = (e) => {
-    if (e.target.type === "text") {
+    if (e.target.type === 'text') {
       this.setState({ title: e.target.value });
-    } else if (e.target.type === "textarea") {
+    } else if (e.target.type === 'textarea') {
       this.setState({ text: e.target.value });
-    } else if (e.target.type === "select-one") {
+    } else if (e.target.type === 'select-one') {
       this.setState({ library: e.target.value });
-    } else if (e.target.type === "checkbox") {
+    } else if (e.target.type === 'checkbox') {
       this.setState({ isMail: e.target.checked });
     } else {
-      console.log("nothing");
+      console.log('nothing');
     }
   };
 
   onSubmitHandler = (e) => {
     e.preventDefault();
-    const { title, text, library, isMail } = this.state;
+    const {
+      title, text, library, isMail,
+    } = this.state;
     console.log(title, text, library, isMail);
   };
 
   render() {
-    const { title, text, library, isMail } = this.state;
+    const {
+      title, text, library, isMail,
+    } = this.state;
     return (
       <div>
         <form onSubmit={this.onSubmitHandler}>

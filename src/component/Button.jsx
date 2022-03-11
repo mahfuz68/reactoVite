@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class Button extends Component {
   shouldComponentUpdate(nextProps) {
@@ -6,13 +6,14 @@ export default class Button extends Component {
     const { local: nextChange } = nextProps;
     if (currentChange === nextChange) {
       return false;
-    } else {
-      return true;
     }
+    return true;
   }
 
   render() {
-    const { change, local, show, enable } = this.props;
+    const {
+      change, local, show, enable,
+    } = this.props;
     if (!enable) {
       return null;
     }
@@ -24,12 +25,12 @@ export default class Button extends Component {
           type="button"
         >
           <div className="text-center">
-            {local === "bn-BD" ? "Click Here" : "এখানে ক্লিক করুন "}
+            {local === 'bn-BD' ? 'Click Here' : 'এখানে ক্লিক করুন '}
           </div>
         </button>
 
         <div className="text-center text-3xl mt-4 capitalize">
-          {show && "hello "}
+          {show && 'hello '}
         </div>
       </>
     );

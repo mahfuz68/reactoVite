@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import Button from "./Button";
+import React, { Component } from 'react';
+import Button from './Button';
 
 export default class Clock extends Component {
   constructor() {
     super();
     this.state = {
       time: new Date(),
-      local: "en-US",
+      local: 'en-US',
     };
   }
 
@@ -33,13 +33,15 @@ export default class Clock extends Component {
 
     return (
       <div className="mt-12">
-        <h1 className="text-4xl my-3 text-center text-red-400">
+        <h1 className="bg-red-500 text-4xl my-3 text-center text-red-400">
           Clock Component
         </h1>
         <h2 className="text-2xl font-bold my-3 text-blue-500 text-center">
-          now {time.toLocaleTimeString(local)}
+          now
+          {' '}
+          {time.toLocaleTimeString(local)}
         </h2>
-        {local === "bn-BD" ? (
+        {local === 'bn-BD' ? (
           <Button
             local="en-US"
             enable={false}
