@@ -19,6 +19,7 @@ export default class Button extends Component {
     }
     return (
       <>
+
         <button
           className="px-2 py-1 flex items-center mx-auto capitalize border-dotted border-red-200 border-4"
           onClick={() => change(local)}
@@ -31,6 +32,7 @@ export default class Button extends Component {
 
         <div className="text-center text-3xl mt-4 capitalize">
           {show && 'hello '}
+          <span className="text-3xl text-red-300">Hello world!</span>
         </div>
       </>
     );

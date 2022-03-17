@@ -1,41 +1,27 @@
 /* eslint-disable no-unused-vars */
-import React, { Component } from 'react';
-import BoilingVerdict from './BoilingVerdict';
-
 const scaleName = {
   c: 'Celsius',
   f: 'Fahrenheit',
 };
 
-export default class TemperatureInput extends Component {
-  state = { temperature: '' };
+export default function TemperatureInput({ temperature, onChangeHandler, scale }) {
+  return (
 
-  onChangeHandler = (e) => {
-    this.setState({ temperature: e.target.value });
-  };
-
-  render() {
-    const { temperature } = this.state;
-    const { scale } = this.props;
-    return (
-      <>
-        <fieldset>
-          <legend>
-            Input temperature in
-            {' '}
-            {scaleName[scale]}
-            :
-          </legend>
-          <input
-            type="text"
-            name=""
-            id=""
-            value={temperature}
-            onChange={this.onChangeHandler}
-          />
-        </fieldset>
-        <BoilingVerdict celsius={parseFloat(temperature)} />
-      </>
-    );
-  }
+    <fieldset className=" ">
+      <legend className="block text-lg text-gray-700  font-bold mb-2">
+        Input temperature in
+        {' '}
+        {scaleName[scale]}
+        :
+      </legend>
+      <input
+        className="shadow appearance-none border rounded w-38 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        type="text"
+        name=""
+        id=""
+        value={temperature}
+        onChange={(e) => onChangeHandler(e, scale)}
+      />
+    </fieldset>
+  );
 }

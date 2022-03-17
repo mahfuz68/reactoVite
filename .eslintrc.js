@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
+    'import/prefer-default-export': 0,
     'react/state-in-constructor': 0,
     'no-console': 0,
     'react/prop-types': 0,
