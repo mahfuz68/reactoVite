@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import MyComponentFunction from './component/Hook/useEffect/MyComponentFunction';
+import Condition from './component/Hook/useEffect/Condition';
 
 class App extends Component {
   state = {
@@ -33,7 +33,8 @@ class App extends Component {
         {/* <TestForm /> */}
         {/* <Counter /> */}
         {/* <MycomponentClass /> */}
-        <MyComponentFunction />
+        {/* <MyComponentFunction /> */}
+        <Condition />
       </div>
     );
   }

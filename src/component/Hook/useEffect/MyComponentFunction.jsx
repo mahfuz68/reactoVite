@@ -9,6 +9,7 @@ export default function MyComponentFunction() {
   };
 
   const tick = () => {
+    console.log('clock Ticking');
     setClock(new Date());
   };
 
@@ -18,8 +19,15 @@ export default function MyComponentFunction() {
   }, [count]);
 
   useEffect(() => {
-    setInterval(tick, 1000);
-  });
+    console.log('Starting Timer');
+    const interval = setInterval(tick, 1000);
+
+    // do the cleanup - stop the timer
+    return () => {
+      console.log('Component Unmounted!');
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <div>
