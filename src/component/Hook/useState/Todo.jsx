@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-export default function UseStates() {
-  const [todo, setTodo] = useState();
+export default function Todo() {
+  const [todo, setTodo] = useState('');
   const [warning, setWarning] = useState();
 
   const handleInput = (e) => {

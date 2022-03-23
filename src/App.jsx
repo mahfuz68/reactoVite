@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import UseStates from './component/Hook/UseState';
+import MyComponentFunction from './component/Hook/useEffect/MyComponentFunction';
 
 class App extends Component {
   state = {
@@ -30,7 +30,10 @@ class App extends Component {
         {/* <ThemeContext.Provider value={this.state}>
           <Content />
         </ThemeContext.Provider> */}
-        <UseStates />
+        {/* <TestForm /> */}
+        {/* <Counter /> */}
+        {/* <MycomponentClass /> */}
+        <MyComponentFunction />
       </div>
     );
   }
