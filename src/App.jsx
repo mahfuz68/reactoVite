@@ -1,24 +1,39 @@
-import ClickCounter from './component/renderProps/ClickCounter';
-import Counter from './component/renderProps/Counter';
-import HoverCounter from './component/renderProps/HoverCounter';
+import { Component } from 'react';
+import UseStates from './component/Hook/UseState';
 
-function App() {
-  return (
-    <div>
-      {/* <ClockList quantities={[1, 2, 3==]} /> */}
-      {/* <Form /> */}
-      {/* <Calculator /> */}
-      {/* <ClickCounter /> */}
-      <Counter render={
+class App extends Component {
+  state = {
+    theme: 'dark',
+    switchTheme: () => {
+      this.setState(({ theme }) => {
+        if (theme === 'dark') {
+          return { theme: 'light' };
+        }
+        return { theme: 'dark' };
+      });
+    },
+  };
+
+  render() {
+    const { theme, switchTheme } = this.state;
+    return (
+      <div>
+        {/* <ClockList quantities={[1, 2, 3==]} /> */}
+        {/* <Form /> */}
+        {/* <Calculator /> */}
+        {/* <ClickCounter /> */}
+        {/* <Counter render={
         (count, incrementCount) => (<ClickCounter count={count} incrementCount={incrementCount} />)
-      }
-      />
-      <Counter render={
-        (count, incrementCount) => (<HoverCounter count={count} incrementCount={incrementCount} />)
-      }
-      />
-    </div>
-  );
+      } */
+        // />
+    }
+        {/* <ThemeContext.Provider value={this.state}>
+          <Content />
+        </ThemeContext.Provider> */}
+        <UseStates />
+      </div>
+    );
+  }
 }
 
 export default App;
