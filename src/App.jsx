@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Condition from './component/Hook/useEffect/Condition';
+import Form from './component/Hook/UseRef&ForowardRef/Form';
 
 class App extends Component {
   state = {
@@ -34,7 +34,10 @@ class App extends Component {
         {/* <Counter /> */}
         {/* <MycomponentClass /> */}
         {/* <MyComponentFunction /> */}
-        <Condition />
+        {/* <Condition /> */}
+        {/* <Mother /> */}
+        <Form />
+        {/* <Time /> */}
       </div>
     );
   }
