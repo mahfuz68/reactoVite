@@ -5,19 +5,19 @@ import Counter from './Counter';
 import HoverCounter from './HoverCounter';
 
 export default function Content() {
-  const context = useContext(ThemeContext);
-  const { theme, switchTheme } = context;
+    const context = useContext(ThemeContext);
+    const { theme, switchTheme } = context;
 
-  return (
-    <div>
-      <h1>this is content page</h1>
-      <Counter render={(count, incrementCount) => (
-        <ThemeContext.Consumer>
-          {() => (<HoverCounter count={count} theme={theme} switchTheme={switchTheme} incrementCount={incrementCount} />)}
-        </ThemeContext.Consumer>
-      )}
-      />
+    return (
+        <div>
+            <h1>this is content page</h1>
+            <Counter render={(count, incrementCount) => (
+                <ThemeContext.Consumer>
+                    {() => (<HoverCounter count={count} theme={theme} switchTheme={switchTheme} incrementCount={incrementCount} />)}
+                </ThemeContext.Consumer>
+            )}
+            />
 
-    </div>
-  );
+        </div>
+    );
 }

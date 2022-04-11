@@ -1,6 +1,5 @@
 import { Component } from 'react';
-// import Form from './component/Hook/UseRef&ForowardRef/Form';
-import Apps from './component/fire/Apps';
+import Database from './fire/Database';
 
 class App extends Component {
     state = {
@@ -39,7 +38,8 @@ class App extends Component {
                 {/* <Mother /> */}
                 {/* <Form /> */}
                 {/* <Time /> */}
-                <Apps />
+                {/* <Apps /> */}
+                <Database />
             </div>
         );
     }

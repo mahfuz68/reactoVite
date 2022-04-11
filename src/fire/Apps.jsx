@@ -59,6 +59,7 @@ function Apps() {
             <button type="button" onClick={createUser}> Create account</button>
             <button type="button" onClick={addData}>Log In</button>
             <button type="button" onClick={handleLogout}>Log out</button>
+
         </div>
     );
 }
