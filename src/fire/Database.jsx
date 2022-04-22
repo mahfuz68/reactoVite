@@ -2,18 +2,22 @@ import {
     get,
     getDatabase, onValue, orderByKey, push, query, ref, set
 } from 'firebase/database';
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+    useEffect, useRef, useState
+} from 'react';
 import './firebase';
 
-export default function Database() {
+function Database() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [videos, setVideos] = useState([]);
     const [todo, setTodo] = useState({
         name: '',
-        age: ''
+        age: '',
+        timestamp: 0
     });
-    const [getTodo, setGetTodo] = useState({});
+    const timestamp = new Date().getTime();
+    const [getTodo, setGetTodo] = useState([]);
 
     const inputRef = useRef(null);
 
@@ -22,18 +26,22 @@ export default function Database() {
         async function fetchVideos() {
             const db = getDatabase();
             const todoReference = ref(db, 'todo');
+            const videoReference = ref(db, 'videos');
             const todoQuarry = query(todoReference, orderByKey());
-
+            const videoQuarry = query(videoReference, orderByKey(videoReference));
+            // console.log(videos);
             try {
                 setError(false);
                 setLoading(true);
                 // request firebase database for data
                 const snapshot = await get(todoQuarry);
+                const videoSnapshot = await get(videoQuarry);
+                // console.log(Object.values(videoSnapshot.val()));
                 setLoading(false);
-                if (snapshot.exists()) {
-                    console.log(snapshot.val());
-                    setGetTodo((prev) => ({ ...prev, ...snapshot.val() }));
-                    console.log(getTodo);
+                if (videoSnapshot.exists()) {
+                    // console.log(snapshot.val());
+                    setVideos((prev) => [...prev, ...Object.values(snapshot.val())]);
+                    // console.log(getTodo);
                 } else {
                     console.log('data cant fetch');
                 }
@@ -46,8 +54,17 @@ export default function Database() {
 
         fetchVideos();
     }, []);
+
+    if (!loading) {
+        console.log(videos);
+        videos.map((video) => {
+            console.log(video);
+            return video;
+        });
+    }
+    console.log('rendered database');
     const { name, age } = todo;
-    async function setupTodo(names, ages) {
+    async function setupTodo(names, ages, timestamps) {
         console.log('rendered setup todo function');
         const db = getDatabase();
         const todoReference = push(ref(db, 'todo'));
@@ -55,7 +72,8 @@ export default function Database() {
         try {
             const setValue = await set(todoReference, {
                 name: names,
-                age: ages
+                age: ages,
+                timestamp: timestamps
             });
             onValue(setValue, (snapshot) => console.log(snapshot.val()));
         } catch (err) {
@@ -101,7 +119,14 @@ export default function Database() {
                 </label>
             </div>
             <div className="flex justify-center mt-4 ">
-                <button className="border-blue-600 bg-red-200 px-2 active:border-2 py-1 rounded-md" type="submit" onClick={() => setupTodo(name, age)}>Submit Data</button>
+                <button
+                    className="border-blue-600 bg-red-200 px-2 active:border-2 py-1 rounded-md"
+                    type="submit"
+                    onClick={() => name && age && setupTodo(name, age, timestamp)}
+                >
+                    Submit Data
+
+                </button>
             </div>
 
             <div>
@@ -114,3 +139,4 @@ export default function Database() {
         </div>
     );
 }
+export default Database;
