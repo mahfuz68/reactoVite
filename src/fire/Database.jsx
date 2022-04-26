@@ -5,6 +5,7 @@ import {
 import React, {
     useEffect, useRef, useState
 } from 'react';
+import { NavLink } from 'react-router-dom';
 import './firebase';
 
 function Database() {
@@ -83,7 +84,12 @@ function Database() {
 
     return (
         <div>
+            <div className="text-center">
+                <NavLink to="/dashboard">
+                    Header
+                </NavLink>
 
+            </div>
             <div className="flex justify-center">
 
                 <label className=" block mb-2 text-md font-medium text-gray-900 dark:text-gray-300 m-4" htmlFor="Name">

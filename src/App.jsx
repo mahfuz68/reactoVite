@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import Database from './fire/Database';
+import { Component, React } from 'react';
+import Header from './component/router/Header';
 
 class App extends Component {
     state = {
@@ -39,7 +39,13 @@ class App extends Component {
                 {/* <Form /> */}
                 {/* <Time /> */}
                 {/* <Apps /> */}
-                <Database />
+                <Header />
+                {/* <Routes>
+                    <Route path="/*" element={<Navigate to="/header" />} />
+                    <Route path="/header" element={<Header />} />
+                </Routes> */}
+                {/* <Header /> */}
+
             </div>
         );
     }
