@@ -1,54 +1,28 @@
-import { Component, React } from 'react';
-import Header from './component/router/Header';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Home from './component/router/Home';
+import Login from './component/router/Login';
+import Post from './component/router/Post';
+import Posts from './component/router/Posts';
+import PrivateOutlate from './component/router/PrivateOutlate';
+import Database from './fire/Database';
 
-class App extends Component {
-    state = {
-        theme: 'dark',
-        switchTheme: () => {
-            this.setState(({ theme }) => {
-                if (theme === 'dark') {
-                    return { theme: 'light' };
-                }
-                return { theme: 'dark' };
-            });
-        }
-    };
+export default function Primary() {
+    return (
+        <div>
 
-    render() {
-        const { theme, switchTheme } = this.state;
-        return (
-            <div>
-                {/* <ClockList quantities={[1, 2, 3==]} /> */}
-                {/* <Form /> */}
-                {/* <Calculator /> */}
-                {/* <ClickCounter /> */}
-                {/* <Counter render={
-        (count, incrementCount) => (<ClickCounter count={count} incrementCount={incrementCount} />)
-      } */
-                    // />
-                }
-                {/* <ThemeContext.Provider value={this.state}>
-          <Content />
-        </ThemeContext.Provider> */}
-                {/* <TestForm /> */}
-                {/* <Counter /> */}
-                {/* <MycomponentClass /> */}
-                {/* <MyComponentFunction /> */}
-                {/* <Condition /> */}
-                {/* <Mother /> */}
-                {/* <Form /> */}
-                {/* <Time /> */}
-                {/* <Apps /> */}
-                <Header />
-                {/* <Routes>
-                    <Route path="/*" element={<Navigate to="/header" />} />
-                    <Route path="/header" element={<Header />} />
-                </Routes> */}
-                {/* <Header /> */}
+            <Routes>
+                <Route index element={<Home />} />
 
-            </div>
-        );
-    }
+                <Route path="/post/:postId" element={<Post />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<PrivateOutlate />}>
+                    <Route path="/database" element={<Database />} />
+                    <Route path="/posts" element={<Posts />} />
+                </Route>
+
+            </Routes>
+
+        </div>
+    );
 }
-
-export default App;

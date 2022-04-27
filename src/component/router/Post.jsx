@@ -13,12 +13,12 @@ export default function Post() {
             <div className="flex justify-center mt-4">
                 <button
                     type="button"
-                    className=" px-4 py-2 block bg-indigo-500 rounded-lg text-gray-200"
+                    className=" px-4 py-2 block bg-indigo-300 rounded-full "
                     onClick={() => {
                         navigate(-1);
                     }}
                 >
-                    go back
+                    Go back
                     {' '}
 
                 </button>
